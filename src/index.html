@@ -7,53 +7,62 @@
 
 </style>
 
-<div id="body">
+<div id="viz">
 
   <!-- <a href="https://github.com/square"><img src="logotype.png" width="122" height="31"></a> -->
+
+  
+
+  <div id="tooltip"></div>
+  <div id="charts" class="charts-border">
+    <div id="hour-chart" class="chart">
+      <div class="title">Time of Day</div>
+    </div>
+    <div id="delay-chart" class="chart">
+      <div class="title">Day of Week</div>
+    </div>
+    <div id="date-chart" class="chart">
+      <div class="title">Date</div>
+    </div>
+  </div>
+  <div id="relationship-chart" class="chrod">
+    <div class="title">Internal Relationship</div>
+  </div>
+
+  <div id="subject-chart" class="wordle">
+    <div class="title">Subject Wordle</div>
+  </div>
+
+  <aside id="totals"><span id="active">-</span> of <span id="total">-</span> flights selected.</aside>
+
+  <!-- <div id="lists">
+    <div id="flight-list" class="list"></div>
+  </div> -->
+
+</div>
+<div id="body">
 
   <h1>Inside Hacking Team</h1>
 
   <h2>Generate new insights from metadata.</h2>
+  <p>Hacking Team 是一家来自意大利米兰的信息技术公司，2015 年 7 月 5 日， Hacking Team 公司的官方 Twitter 帐号遭到不明人士入侵，随后，其公布了内部电子邮件等。Hacking Team 公司内部电子邮件数据是了解该公司的重要数据源，它不但能反 映公司员工间及与业务对象间的复杂通信网络，还可以从邮件内容与附件中了解公司经营的业务内容。我们希望通过可视分析的方式解密 Hacking Team 公司的组织结构和发展历程。
 
-<div id="tooltip"></div>
-<div id="charts">
-  <div id="hour-chart" class="chart">
-    <div class="title">Time of Day</div>
-  </div>
-  <div id="delay-chart" class="chart">
-    <div class="title">Day of Week</div>
-  </div>
-  <div id="date-chart" class="chart">
-    <div class="title">Date</div>
-  </div>
-</div>
-<div id="relationship-chart" class="chrod">
-  <div class="title">Internal Relationship</div>
-</div>
+  <h2>Usage Introduction</h2>
+  <p>时间筛选：0-24为所有往来邮件在一天24小时中的分布情况，0-7为所有往来邮件在一星期七天中的分布情况（0为星期天，1为星期一，依次类推），第三根轴是从发出第一封邮件起到收到最后一封邮件为止的时间内邮件随时间的分布情况。时间筛选可叠加。颜色编码收／发邮件。
+  <p>关系图：圆环角度编码在所筛选条件下某人发出邮件的数目，发的越多，所占角度越大。圆环可选中，进行进一步查看。每一条带编码两个人之间的邮件往来，条带两头的粗细编码那个人给另一个人所发的邮件数目。鼠标悬浮可见详细信息。
+  <p>云图：所筛选情况下的邮件的主题编码成云图，字的大小越大代表出现数目越多，即越重要。
 
-<div id="subject-chart" class="wordle">
-  <div class="title">Subject Wordle</div>
-</div>
+  <h2>What we found through visual analytics</h2>
 
-<aside id="totals"><span id="active">-</span> of <span id="total">-</span> flights selected.</aside>
+  <p>
 
-<div id="lists">
-  <div id="flight-list" class="list"></div>
-</div>
+  <!-- <p>Some questions to consider: How does time-of-day correlate with <a href="javascript:filter([null, [100, 150], null, null])">arrival delay</a>? Are <a href="javascript:filter([null, null, [1700, 2000], null])">longer</a> or <a href="javascript:filter([null, null, [0, 300], null])">shorter</a> flights more likely to arrive early? What happened on <a href="javascript:filter([null, [80, 150], null, [new Date(2001, 0, 12), new Date(2001, 0, 13)]])">January 12</a>? How do flight patterns differ between <a href="javascript:filter([null, null, null, [new Date(2001, 0, 27), new Date(2001, 0, 29)]])">weekends</a> and <a href="javascript:filter([null, null, null, [new Date(2001, 0, 29), new Date(2001, 1, 3)]])">weekdays</a>, or <a href="javascript:filter([[4, 7], null, null, null])">mornings</a> and <a href="javascript:filter([[21, 24], null, null, null])">nights</a>? <a href="https://github.com/square/crossfilter/tree/gh-pages">Fork this example</a> and try your own data! -->
 
 
 
 </div>
 
 <a href="https://github.com/realwsq/Inside-Hacking-Team"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
-
-<p>Hacking Team 是一家来自意大利米兰的信息技术公司，2015 年 7 月 5 日， Hacking Team 公司的官方 Twitter 帐号遭到不明人士入侵，随后，其公布了内部电子邮件等。Hacking Team 公司内部电子邮件数据是了解该公司的重要数据源，它不但能反 映公司员工间及与业务对象间的复杂通信网络，还可以从邮件内容与附件中了解公司经营的业务内容。我们希望通过可视分析的方式解密 Hacking Team 公司的组织结构和发展历程。
-
-<h2>What we found through visual analytics</h2>
-
-<p>
-
-<!-- <p>Some questions to consider: How does time-of-day correlate with <a href="javascript:filter([null, [100, 150], null, null])">arrival delay</a>? Are <a href="javascript:filter([null, null, [1700, 2000], null])">longer</a> or <a href="javascript:filter([null, null, [0, 300], null])">shorter</a> flights more likely to arrive early? What happened on <a href="javascript:filter([null, [80, 150], null, [new Date(2001, 0, 12), new Date(2001, 0, 13)]])">January 12</a>? How do flight patterns differ between <a href="javascript:filter([null, null, null, [new Date(2001, 0, 27), new Date(2001, 0, 29)]])">weekends</a> and <a href="javascript:filter([null, null, null, [new Date(2001, 0, 29), new Date(2001, 1, 3)]])">weekdays</a>, or <a href="javascript:filter([[4, 7], null, null, null])">mornings</a> and <a href="javascript:filter([[21, 24], null, null, null])">nights</a>? <a href="https://github.com/square/crossfilter/tree/gh-pages">Fork this example</a> and try your own data! -->
 
 <!-- <footer>
   <span style="float:right;">
@@ -94,265 +103,262 @@
 // to address: "aikhong.ang@ip-tribe.com"
 // to type: "cc"
 
-d3.csv("../data/cleaned_address.csv", function(error, flights) {
-  console.log(flights)
+// d3.csv("../data/cleaned_address.csv", function(error, flights) {
+//   console.log(flights)
+  
+// })
+
+// (It's CSV, but GitHub Pages only gzip's JSON at the moment.)
+d3.csv("../data/sampled_data.csv", function(error, flights) {
+  // console.log(flights)
+  //
+    // date: 2015.6
+    // weekday: 6
+    // month: 11
 
 
+
+  // Various formatters.
+  var formatNumber = d3.format(",d"),
+      formatChange = d3.format("+,d"),
+      formatDate = d3.time.format("%B %d, %Y"),
+      formatTime = d3.time.format("%I:%M %p");
+
+  // A nest operator, for grouping the flight list.
+  var nestByDate = d3.nest()
+      .key(function(d) { 
+        return formatDate(d.time); 
+      });
+
+  // 274734
+  console.log(vip_names);
+  //--------
+  // flights = flights.slice(0,200)
+  //--------
+  flights = flights.filter(function(d) {
+    // console.log(d)
+    if (vip_names.indexOf(d["from address"]) !== -1 && 
+      vip_names.indexOf(d["to address"]) !== -1) return true;
+    else return false;
+  })
+  // 101519
+  // A little coercion, since the CSV is untyped.
+  flights.forEach(function(d, i) {
+    d.index = i;
+    d.time = parseDate(d["data sent time"]);
+    d.yearAndMonth = d3.time.month(d.time);
+    // d.yearAndMonth = (d.time.getYear()).toString()+"-"+(d.time.getMonth()).toString();
+    d.weekday = d.time.getDay(); // 0-Sun 1-Mon 
+    d.hour = d.time.getHours();
+    // d.from_i = vip_names.indexOf(d["from address"]);  // d["from address"] contains name string
+    // d.to_i = vip_names.indexOf(d["to address"]);   // d["to address"] contains name string
+    // d.totype = d["to type"];
+    // d.importance = d["importance"];
+  });
+  // console.log(flights)
+    // "": "1149216"
+    // attachment names: ""
+    // creator name: "Marco Losito"
+    // data received time: "2014/11/5 20:12:26"
+    // data sent time: "2014/11/5 20:12:20"
+    // from address: "a.capaldo"
+    // hour: 20
+    // importance: "1"
+    // index: 0
+    // size: "22987"
+    // subject: "Condizioni bagno (area break)"
+    // time: Fri Dec 05 2014 20:12:00 GMT+0800 (CST) {}
+    // to address: "d.giubertoni"
+    // to type: "direct"
+    // weekday: 5
+    // yearAndMonth: Mon Dec 01 2014 00:00:00 GMT+0800 (CST)
+
+  var selectedEmailAccount = [];
+  var addedEmailAccount = [];
+  var deletedEmailAccount = [];
+
+  // check if v[attr] in array
+  var checkIfInSelected = function(v, attr, array) {
+    // console.log(v,attr,array)
+    if (array.length == 0) return true;
+    if (array.indexOf(v[attr]) > -1) {
+      // console.log(selectedEmailAccount, attr);
+      return true;
+    }
+    else return false;
+  }
+
+  // Create the crossfilter for the relevant dimensions and groups.
+  var flight = crossfilter(flights),
+      all = flight.groupAll(),
+      from_to_wrapper = wrapper(["from address", "to address"], [])
+      from_to = flight.dimension(function(d) { return from_to_wrapper.jsonify(d);}),
+      from_tos = from_to.group()
+
+
+  var chrodChartInstance = chrodChart()
+      // .dimension(from_to)
+      .group(from_tos)
+      .notifyOutside(function(added, deleted, selected) {
+        console.log("set outside selected account", added, deleted, selected);
+        selectedEmailAccount = selected;
+        addedEmailAccount = added;
+        deletedEmailAccount = deleted;
+        function filter(d) {
+          if (!selectedEmailAccount.length) return true;
+          for (var i = 0; i < d.length; i++) {
+            if (selected.indexOf(d[i]) != -1) return true;
+          }
+          return false
+        }
+        from_to.filter(function(d) {
+          // return d.startsWith(name)||d.endsWith(name)
+          return filter(from_to_wrapper.getValue(d))
+        })
+        renderAll();
+        addedEmailAccount = deletedEmailAccount = selectedEmailAccount
+      })
+      .wrapper(from_to_wrapper);
+      // .round(Math.floor)
+
+  var wordleChartInstance = wordleChart()
+    .dimension(from_to);
+
+  // Render the initial lists.
+  // var list = d3.selectAll(".list")
+  //     .data([flightList]);
+
+  // Render the initial chrod.
+  var chrod = d3.selectAll(".chrod")
+      .data([chrodChartInstance])
+      // .each(function(chart) { chart.on("brush", renderAll).on("brushend", renderAll); });
+
+  var wordle = d3.selectAll(".wordle")
+      .data([wordleChartInstance])
+
+  var timeSelection = TimeSelection()
+        .crossfilter(flight)
+        .accessTime({
+          getHour: function(d) {return d.hour;},
+          getWeekday: function(d) {return d.weekday;},
+          getMonth: function(d) { return d.yearAndMonth; },
+          domain: [new Date(2012, 0, 1), new Date(2015, 12, 31)],
+          howManyMonthsInDomain: 4*12
+        })
+        .stackData({
+          group: function(gtime, d, g) {
+            if (!(gtime in g)) {
+              g[gtime] = {"sent": 0, "received": 0};
+            }
+            if (checkIfInSelected(d, "from address", selectedEmailAccount)) g[gtime].sent++;
+            if (checkIfInSelected(d, "to address", selectedEmailAccount)) g[gtime].received++;
+            return g;
+          },
+          stackedKey: ["sent", "received"]
+        })
+        .barWidth(10)
+        .DOMclass("chart")
+        .notifyOutside(renderAll)
+
+  timeSelection.start();
+
+
+  // Render the total.
+  d3.selectAll("#total")
+      .text(formatNumber(flight.size()));
+  renderAll();
+
+  // Renders the specified chart or list.
+  function render(method) {
+    d3.select(this).call(method);
+  }
+
+  // Whenever the brush moves, re-rendering everything.
+  function renderAll() {
+    console.log("in render all")
+    timeSelection.draw();
+    // list.each(render);
+    chrod.each(render);
+    wordle.each(render);
+    d3.select("#active").text(formatNumber(all.value()));
+  }
+
+  // Like d3.time.format, but faster.
+  function parseDate(d) {
+    var _ = d.split(" ")
+    var date = _[0].split("/");
+    var time = _[1].split(":");
+    return new Date(
+        date[0],
+        date[1],
+        date[2],
+        time[0],
+        time[1]);
+  }
+
+  window.filter = function(filters) {
+    console.log("window.filter")
+    filters.forEach(function(d, i) { charts[i].filter(d); });
+    renderAll();
+  };
+
+  window.reset = function(i) {
+    console.log("window.reset")
+    charts[i].filter(null);
+    if (i == -1) {
+      chrod.clearfilter();
+    }
+    renderAll();
+  };
+
+  function flightList(div) {
+    var flightsByDate = nestByDate.entries(from_to.top(40));
+    div.each(function() {
+      var date = d3.select(this).selectAll(".date")
+          .data(flightsByDate, function(d) { return d.key; });
+
+      date.enter().append("div")
+          .attr("class", "date")
+        .append("div")
+          .attr("class", "day")
+          .text(function(d) { return d.key; });
+
+      date.exit().remove();
+
+      var flight = date.order().selectAll(".flight")
+          .data(function(d) { return d.values; }, function(d) { return d.index; });
+
+      var flightEnter = flight.enter().append("div")
+          .attr("class", "flight");
+
+      flightEnter.append("div")
+          .attr("class", "time")
+          .text(function(d) { return formatTime(d.time); });
+
+      flightEnter.append("div")
+          .attr("class", "origin")
+          .text(function(d) { return d["from address"]; });
+
+      flightEnter.append("div")
+          .attr("class", "destination")
+          .text(function(d) { return d["to address"]; });
+
+      flightEnter.append("div")
+          .attr("class", "distance")
+          .text(function(d) { return d["subject"]; });
+
+      flightEnter.append("div")
+          .attr("class", "delay")
+          .text(function(d) { return d["importance"]; });
+
+      flight.exit().remove();
+
+      flight.order();
+    });
+  }
 
   
-})
-
-// // (It's CSV, but GitHub Pages only gzip's JSON at the moment.)
-// d3.csv("../data/sampled_data.csv", function(error, flights) {
-//   // console.log(flights)
-//   //
-//     // date: 2015.6
-//     // weekday: 6
-//     // month: 11
-
-
-
-//   // Various formatters.
-//   var formatNumber = d3.format(",d"),
-//       formatChange = d3.format("+,d"),
-//       formatDate = d3.time.format("%B %d, %Y"),
-//       formatTime = d3.time.format("%I:%M %p");
-
-//   // A nest operator, for grouping the flight list.
-//   var nestByDate = d3.nest()
-//       .key(function(d) { 
-//         return formatDate(d.time); 
-//       });
-
-//   // 274734
-//   console.log(vip_names);
-//   //--------
-//   // flights = flights.slice(0,200)
-//   //--------
-//   flights = flights.filter(function(d) {
-//     // console.log(d)
-//     if (vip_names.indexOf(d["from address"]) !== -1 && 
-//       vip_names.indexOf(d["to address"]) !== -1) return true;
-//     else return false;
-//   })
-//   // 101519
-//   // A little coercion, since the CSV is untyped.
-//   flights.forEach(function(d, i) {
-//     d.index = i;
-//     d.time = parseDate(d["data sent time"]);
-//     d.yearAndMonth = d3.time.month(d.time);
-//     // d.yearAndMonth = (d.time.getYear()).toString()+"-"+(d.time.getMonth()).toString();
-//     d.weekday = d.time.getDay(); // 0-Sun 1-Mon 
-//     d.hour = d.time.getHours();
-//     // d.from_i = vip_names.indexOf(d["from address"]);  // d["from address"] contains name string
-//     // d.to_i = vip_names.indexOf(d["to address"]);   // d["to address"] contains name string
-//     // d.totype = d["to type"];
-//     // d.importance = d["importance"];
-//   });
-//   // console.log(flights)
-//     // "": "1149216"
-//     // attachment names: ""
-//     // creator name: "Marco Losito"
-//     // data received time: "2014/11/5 20:12:26"
-//     // data sent time: "2014/11/5 20:12:20"
-//     // from address: "a.capaldo"
-//     // hour: 20
-//     // importance: "1"
-//     // index: 0
-//     // size: "22987"
-//     // subject: "Condizioni bagno (area break)"
-//     // time: Fri Dec 05 2014 20:12:00 GMT+0800 (CST) {}
-//     // to address: "d.giubertoni"
-//     // to type: "direct"
-//     // weekday: 5
-//     // yearAndMonth: Mon Dec 01 2014 00:00:00 GMT+0800 (CST)
-
-//   var selectedEmailAccount = [];
-//   var addedEmailAccount = [];
-//   var deletedEmailAccount = [];
-
-//   // check if v[attr] in array
-//   var checkIfInSelected = function(v, attr, array) {
-//     // console.log(v,attr,array)
-//     if (array.length == 0) return true;
-//     if (array.indexOf(v[attr]) > -1) {
-//       // console.log(selectedEmailAccount, attr);
-//       return true;
-//     }
-//     else return false;
-//   }
-
-//   // Create the crossfilter for the relevant dimensions and groups.
-//   var flight = crossfilter(flights),
-//       all = flight.groupAll(),
-//       from_to_wrapper = wrapper(["from address", "to address"], [])
-//       from_to = flight.dimension(function(d) { return from_to_wrapper.jsonify(d);}),
-//       from_tos = from_to.group()
-
-
-//   var chrodChartInstance = chrodChart()
-//       // .dimension(from_to)
-//       .group(from_tos)
-//       .notifyOutside(function(added, deleted, selected) {
-//         console.log("set outside selected account", added, deleted, selected);
-//         selectedEmailAccount = selected;
-//         addedEmailAccount = added;
-//         deletedEmailAccount = deleted;
-//         function filter(d) {
-//           if (!selectedEmailAccount.length) return true;
-//           for (var i = 0; i < d.length; i++) {
-//             if (selected.indexOf(d[i]) != -1) return true;
-//           }
-//           return false
-//         }
-//         from_to.filter(function(d) {
-//           // return d.startsWith(name)||d.endsWith(name)
-//           return filter(from_to_wrapper.getValue(d))
-//         })
-//         renderAll();
-//         addedEmailAccount = deletedEmailAccount = selectedEmailAccount
-//       })
-//       .wrapper(from_to_wrapper);
-//       // .round(Math.floor)
-
-//   var wordleChartInstance = wordleChart()
-//     .dimension(from_to);
-
-//   // Render the initial lists.
-//   var list = d3.selectAll(".list")
-//       .data([flightList]);
-
-//   // Render the initial chrod.
-//   var chrod = d3.selectAll(".chrod")
-//       .data([chrodChartInstance])
-//       // .each(function(chart) { chart.on("brush", renderAll).on("brushend", renderAll); });
-
-//   var wordle = d3.selectAll(".wordle")
-//       .data([wordleChartInstance])
-
-//   var timeSelection = TimeSelection()
-//         .crossfilter(flight)
-//         .accessTime({
-//           getHour: function(d) {return d.hour;},
-//           getWeekday: function(d) {return d.weekday;},
-//           getMonth: function(d) { return d.yearAndMonth; },
-//           domain: [new Date(2012, 0, 1), new Date(2015, 12, 31)],
-//           howManyMonthsInDomain: 4*12
-//         })
-//         .stackData({
-//           group: function(gtime, d, g) {
-//             if (!(gtime in g)) {
-//               g[gtime] = {"sent": 0, "received": 0};
-//             }
-//             if (checkIfInSelected(d, "from address", selectedEmailAccount)) g[gtime].sent++;
-//             if (checkIfInSelected(d, "to address", selectedEmailAccount)) g[gtime].received++;
-//             return g;
-//           },
-//           stackedKey: ["sent", "received"]
-//         })
-//         .barWidth(10)
-//         .DOMclass("chart")
-//         .notifyOutside(renderAll)
-
-//   timeSelection.start();
-
-
-//   // Render the total.
-//   d3.selectAll("#total")
-//       .text(formatNumber(flight.size()));
-//   renderAll();
-
-//   // Renders the specified chart or list.
-//   function render(method) {
-//     d3.select(this).call(method);
-//   }
-
-//   // Whenever the brush moves, re-rendering everything.
-//   function renderAll() {
-//     console.log("in render all")
-//     timeSelection.draw();
-//     list.each(render);
-//     chrod.each(render);
-//     wordle.each(render);
-//     d3.select("#active").text(formatNumber(all.value()));
-//   }
-
-//   // Like d3.time.format, but faster.
-//   function parseDate(d) {
-//     var _ = d.split(" ")
-//     var date = _[0].split("/");
-//     var time = _[1].split(":");
-//     return new Date(
-//         date[0],
-//         date[1],
-//         date[2],
-//         time[0],
-//         time[1]);
-//   }
-
-//   window.filter = function(filters) {
-//     console.log("window.filter")
-//     filters.forEach(function(d, i) { charts[i].filter(d); });
-//     renderAll();
-//   };
-
-//   window.reset = function(i) {
-//     console.log("window.reset")
-//     charts[i].filter(null);
-//     if (i == -1) {
-//       chrod.clearfilter();
-//     }
-//     renderAll();
-//   };
-
-//   function flightList(div) {
-//     var flightsByDate = nestByDate.entries(from_to.top(40));
-//     div.each(function() {
-//       var date = d3.select(this).selectAll(".date")
-//           .data(flightsByDate, function(d) { return d.key; });
-
-//       date.enter().append("div")
-//           .attr("class", "date")
-//         .append("div")
-//           .attr("class", "day")
-//           .text(function(d) { return d.key; });
-
-//       date.exit().remove();
-
-//       var flight = date.order().selectAll(".flight")
-//           .data(function(d) { return d.values; }, function(d) { return d.index; });
-
-//       var flightEnter = flight.enter().append("div")
-//           .attr("class", "flight");
-
-//       flightEnter.append("div")
-//           .attr("class", "time")
-//           .text(function(d) { return formatTime(d.time); });
-
-//       flightEnter.append("div")
-//           .attr("class", "origin")
-//           .text(function(d) { return d["from address"]; });
-
-//       flightEnter.append("div")
-//           .attr("class", "destination")
-//           .text(function(d) { return d["to address"]; });
-
-//       flightEnter.append("div")
-//           .attr("class", "distance")
-//           .text(function(d) { return d["subject"]; });
-
-//       flightEnter.append("div")
-//           .attr("class", "delay")
-//           .text(function(d) { return d["importance"]; });
-
-//       flight.exit().remove();
-
-//       flight.order();
-//     });
-//   }
-
-  
-// });
+});
 
 
 
