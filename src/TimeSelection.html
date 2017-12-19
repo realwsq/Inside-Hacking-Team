@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+<style>
+
+
+</style>
+<link rel="stylesheet" type="text/css" href="../libs/d3-parsets-master/d3.parsets.css">
+</head>
+
+<body>
+<script src="../libs/d3.v3.min.js"></script>
+<script src="../libs/d3-parsets-master/d3.parsets.js"></script>
+
+<script>
+
+var margin = {top: 80, right: 180, bottom: 80, left: 180},
+    width = 1000 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+// 要改成年份+月份 星期几 几点
+// 要能选中一块
+// 颜色方式要改一下
+var chart = d3.parsets()
+      .dimensions(["date","weekday","hour"])
+      .width(width)
+      .height(height)
+      .tension(0.3)
+      .spacing(20)
+      // .setDimensionsWidth(function(c, d, w) {
+      //   if (d.name == "date") return 1.0 * w / (d.categories.length);
+      //   else if (d.name == "weekday") return d.name == "weekday" ? 5.0/7*w : 2.0/7*w;
+      //   else if (d.name == "hour") {
+      //       [f, l] = c.name.split('-');
+      //       return 1.0 / 24 * w * (parseInt(l) - parseInt(f))
+      //   }
+      // });
+
+d3.csv("../data/datetime.csv", function(error, csv) {
+    console.log(csv);
+    svg.datum(csv).call(chart);
+});
+
+// document.onclick=function(){
+//     console.log("hi there! click document")
+// }
+
+</script>
+</body>
