@@ -1,3 +1,9 @@
+运行：
+cd Inside-Hacking-Team那个文件夹下
+python -m SimpleHTTPServer
+进src
+
+
 Feedback:
 1. 问题及改进
 用的时候哪里不爽，有哪些觉得很必要加上去的功能。比如我在用的时候很希望可以选择条带，看两个人之间往来邮件的随时间的变化情况，等。

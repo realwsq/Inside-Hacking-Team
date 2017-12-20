@@ -6,7 +6,6 @@ function wordleChart() {
 
 	function wordle(div) {
 		getSentence();
-		console.log(sentence)
 		var width = div[0][0].offsetWidth, 
 			height = div[0][0].offsetHeight;
 		var choppedWords = chopSentenceToWords().sort(function(a,b) {return b.size - a.size}).slice(0, 100);
@@ -24,7 +23,6 @@ function wordleChart() {
 
 	    function draw(words) {
 	    	console.log("in draw cloud")
-	    	console.log(words)
 			div.each(function() {
 	        	var div = d3.select(this)
 	        	div.selectAll("*").remove();

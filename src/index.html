@@ -49,7 +49,7 @@
 
   <h2>Usage Introduction</h2>
   <p>时间筛选：0-24为所有往来邮件在一天24小时中的分布情况，0-7为所有往来邮件在一星期七天中的分布情况（0为星期天，1为星期一，依次类推），第三根轴是从发出第一封邮件起到收到最后一封邮件为止的时间内邮件随时间的分布情况。时间筛选可叠加。颜色编码收／发邮件。
-  <p>关系图：圆环角度编码在所筛选条件下某人发出邮件的数目，发的越多，所占角度越大。圆环可选中，进行进一步查看。每一条带编码两个人之间的邮件往来，条带两头的粗细编码那个人给另一个人所发的邮件数目。鼠标悬浮可见详细信息。
+  <p>关系图：圆环角度编码在所筛选条件下某人发出邮件的数目，发的越多，所占角度越大。圆环可选中，进行进一步查看。（单击选中圆环可取消选择，单击chord中心取消选中）选中两人可查看两人之间邮件往来情况。每一条带编码两个人之间的邮件往来，条带两头的粗细编码那个人给另一个人所发的邮件数目。鼠标悬浮可见详细信息。
   <p>云图：所筛选情况下的邮件的主题编码成云图，字的大小越大代表出现数目越多，即越重要。
 
   <h2>What we found through visual analytics</h2>
@@ -59,11 +59,10 @@
   <p>d.milan的往来邮件数为何在2013.9发生激增？升职了吗？（且发件数一直较小于收件数）
   <p>白天邮件主要有关于什么，晚上往来邮件主要关于什么？
   <p>公司刚起步的时候邮件主要关于什么，到15年又转向了什么？
-  <p>2013年初，公司刚起步的时候，公司职员较少，主要有d.milan, s.woon, a.scarafile, d.maglietta。d.milan与a.scarafile往来比较密切，d.maglietta与s.woon往来较为密切。而他们也随着公司的发展一路高升。大多数人都随着公司的发展在2014.8月9月左右的时候邮件数激增。公司到2015年中旬的时候，公司内职责分布较为平均，相对来说职责较重的有d.vincenzetti, i.rana, e.shehata和s.gallucci。s.gallucci和d.vincenzetti应该都是在2013年九月左右任职，并且都在一开始就受到了重任。且两个人(还有i.rana, e.shehata)都是发件数较大于收件数，是否从事类似相关工作？
+  <p>2013年初，公司刚起步的时候，公司职员较少，主要有d.milan, s.woon, a.scarafile, d.maglietta。d.milan与a.scarafile往来比较密切，d.maglietta与s.woon往来较为密切。而他们也随着公司的发展一路高升，并且始终保持紧密联系。大多数人都随着公司的发展在2014.8月9月左右的时候邮件数激增。公司到2015年中旬的时候，公司内职责分布较为平均，相对来说职责较重的有d.vincenzetti, i.rana, e.shehata和s.gallucci。s.gallucci和d.vincenzetti应该都是在2013年九月左右任职，并且都在一开始就受到了重任。且两个人(还有i.rana, e.shehata)都是发件数较大于收件数，是否从事类似相关工作？
   <p>整个公司的人的作息都很有意思。基本上大家都喜欢在下午、晚上的时候工作。若我们选中六点到十三点这个时间，可以发现在这个时间段中d.vincenzetti所发的邮件数是远远大于其他人的，s.woon和d.maglietta在这个时间段发的邮件数比例也是比较大的，且往来分布较均匀。d.vincenzetti早上两点到十点为一般休息时间，除了这个时间段外基本都在认真工作。而d.milan甚至会工作到早上五点（休息时间为6点到15点）。d.maglietta通过邮件很清楚的展示了他一天的作息，从八点到晚上五六点邮件往来数稳步上升，下午一点基本上是公司的吃饭时间（因为来的邮件数较少）。
 
   <!-- <p>Some questions to consider: How does time-of-day correlate with <a href="javascript:filter([null, [100, 150], null, null])">arrival delay</a>? Are <a href="javascript:filter([null, null, [1700, 2000], null])">longer</a> or <a href="javascript:filter([null, null, [0, 300], null])">shorter</a> flights more likely to arrive early? What happened on <a href="javascript:filter([null, [80, 150], null, [new Date(2001, 0, 12), new Date(2001, 0, 13)]])">January 12</a>? How do flight patterns differ between <a href="javascript:filter([null, null, null, [new Date(2001, 0, 27), new Date(2001, 0, 29)]])">weekends</a> and <a href="javascript:filter([null, null, null, [new Date(2001, 0, 29), new Date(2001, 1, 3)]])">weekdays</a>, or <a href="javascript:filter([[4, 7], null, null, null])">mornings</a> and <a href="javascript:filter([[21, 24], null, null, null])">nights</a>? <a href="https://github.com/square/crossfilter/tree/gh-pages">Fork this example</a> and try your own data! -->
-
 
 
 </div>
@@ -116,14 +115,6 @@
 
 // (It's CSV, but GitHub Pages only gzip's JSON at the moment.)
 d3.csv("../data/sampled_data.csv", function(error, flights) {
-  // console.log(flights)
-  //
-    // date: 2015.6
-    // weekday: 6
-    // month: 11
-
-
-
   // Various formatters.
   var formatNumber = d3.format(",d"),
       formatChange = d3.format("+,d"),
@@ -180,9 +171,6 @@ d3.csv("../data/sampled_data.csv", function(error, flights) {
     // yearAndMonth: Mon Dec 01 2014 00:00:00 GMT+0800 (CST)
 
   var selectedEmailAccount = [];
-  var addedEmailAccount = [];
-  var deletedEmailAccount = [];
-
   // check if v[attr] in array
   var checkIfInSelected = function(v, attr, array) {
     // console.log(v,attr,array)
@@ -192,6 +180,23 @@ d3.csv("../data/sampled_data.csv", function(error, flights) {
       return true;
     }
     else return false;
+  }
+  function selectedEmailAccountFilter(d) {
+    switch (selectedEmailAccount.length) {
+      case 0: return true;
+      case 1: 
+        for (var i = 0; i < d.length; i++) {
+          if (selectedEmailAccount[0] == d[i]) return true;
+        }
+        return false;
+      default:
+        // 这里知道了d只有两项，收件人和寄件人 
+        // 不关心自己寄给自己的
+        if (d[0] == d[1]) return false;
+        if (selectedEmailAccount.indexOf(d[0]) == -1) return false;
+        if (selectedEmailAccount.indexOf(d[1]) == -1) return false;
+        return true;
+    }
   }
 
   // Create the crossfilter for the relevant dimensions and groups.
@@ -205,24 +210,16 @@ d3.csv("../data/sampled_data.csv", function(error, flights) {
   var chrodChartInstance = chrodChart()
       // .dimension(from_to)
       .group(from_tos)
-      .notifyOutside(function(added, deleted, selected) {
-        console.log("set outside selected account", added, deleted, selected);
+      .filter(selectedEmailAccountFilter)
+      .notifyOutside(function(selected) {
+        console.log("set outside selected account", selected);
         selectedEmailAccount = selected;
-        addedEmailAccount = added;
-        deletedEmailAccount = deleted;
-        function filter(d) {
-          if (!selectedEmailAccount.length) return true;
-          for (var i = 0; i < d.length; i++) {
-            if (selected.indexOf(d[i]) != -1) return true;
-          }
-          return false
-        }
+
         from_to.filter(function(d) {
           // return d.startsWith(name)||d.endsWith(name)
-          return filter(from_to_wrapper.getValue(d))
+          return selectedEmailAccountFilter(from_to_wrapper.getValue(d))
         })
         renderAll();
-        addedEmailAccount = deletedEmailAccount = selectedEmailAccount
       })
       .wrapper(from_to_wrapper);
       // .round(Math.floor)

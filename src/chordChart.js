@@ -3,6 +3,7 @@ function chrodChart() {
         // dimension,
         group,
         notifyOutside,
+        filter,
         wrapper,
         data,
         all_names,
@@ -61,6 +62,7 @@ function chrodChart() {
             .enter().append("svg:g")
               .attr("class", "group")
               .on("mouseover", mouseover)
+              // .on("dblclick", function(d, i) {console.log(d, i, "dblclick")})
               .on("click", mouseclick)
               .on("mouseout", function (d) { d3.select("#tooltip").style("visibility", "hidden") });
 
@@ -104,20 +106,19 @@ function chrodChart() {
 
     }
     function chordTip (d) {
-      var p = d3.format(".2%"), q = d3.format(",.3r")
-      return "Chord Info:<br/>"
-        + p(d.svalue/d.stotal) + " (" + q(d.svalue) + ") of "
-        + d.sname + " prefer " + d.tname
-        + (d.sname === d.tname ? "": ("<br/>while...<br/>"
-        + p(d.tvalue/d.ttotal) + " (" + q(d.tvalue) + ") of "
-        + d.tname + " prefer " + d.sname))
+      var p = d3.format(".2%"), q = parseInt
+      return "条带信息:<br/>"
+        + d.sname + " 给 " + d.tname + "发了" + p(d.svalue/d.stotal) + " (" + q(d.svalue) + ") 的邮件"
+        + (d.sname === d.tname ? "": ("<br/>而<br/>"
+        + d.tname + " 给 " + d.sname + "发了" + p(d.tvalue/d.ttotal) + " (" + q(d.tvalue) + ") 的邮件"
+        ))
     }
 
     function groupTip (d) {
       var p = d3.format(".1%"), q = d3.format(",.3r")
-      return "Group Info:<br/>"
-          + d.gname + " : " + q(d.gvalue) + "<br/>"
-          + p(d.gvalue/d.mtotal) + " of Matrix Total (" + q(d.mtotal) + ")"
+      return "个人信息:<br/>"
+          + d.gname + " 共发了 " + q(d.gvalue) + "封邮件<br/>"
+          + "占全部邮件(" + q(d.mtotal) + ")的" + p(d.gvalue/d.mtotal) 
     }
     function filter(d) {
       if (!selected.length) return true;
@@ -138,22 +139,15 @@ function chrodChart() {
       console.log("click chord")
       cancelEvent();
       var name = rdr(d).gname
-      if (selected.length == 0) {
-        selected.push(name);
-        notifyOutside([], removeFromArray([name], all_names), selected);
-      } else if ((indexOfName = selected.indexOf(name))>-1) {
-        selected.splice(indexOfName, 1);
-        notifyOutside([], [name], selected);
+      
+      var indexOfName = selected.indexOf(name)
+      if (indexOfName > -1 ){
+        selected.splice(indexOfName,1);
       } else {
         selected.push(name);
-        notifyOutside([name], [], selected);
       }
-      // dimension.filter(function(d) {
-      //   // return d.startsWith(name)||d.endsWith(name)
-      //   return filter(wrapper.getValue(d))
-      // })
-      // renderOthers()
-
+      notifyOutside(selected);
+      
       display()
     }
     function mouseover(d, i) {
@@ -199,11 +193,11 @@ function chrodChart() {
       chord.matrix(matrix);
     }
 
-    // chrod.dimension = function(_) {
-    //   if (!arguments.length) return dimension;
-    //   dimension = _;
-    //   return chrod;
-    // };
+    chrod.filter = function(_) {
+      if (!arguments.length) return filter;
+      filter = _;
+      return chrod;
+    };
 
     chrod.group = function(_) {
       if (!arguments.length) return group;
@@ -215,7 +209,7 @@ function chrodChart() {
       var deleted = selected;
       selected = [];
       // dimension.filterAll();
-      notifyOutside(removeFromArray(deleted, all_names), [], selected);
+      notifyOutside(selected);
     };
 
     chrod.notifyOutside = function(_) {
